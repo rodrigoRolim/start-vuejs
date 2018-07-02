@@ -3,15 +3,15 @@
     <ul class="todo-list">
       <li v-for="todo in sortedTasks" class="todo">
         <div class="view">
-          <input type="checkbox" class="toggle" v-bind:id="'done-' + todo.title"
-          @click="completeTask(todo)">
-          <label :class="{ 'todo-completed': todo.completed }" v-bind:for="'done-' + todo.title">
-          {{ todo.title }}
+          <label class="container-label">
+            <input type="checkbox" class="toggle" v-bind:id="'done-' + todo.title"
+             @click="completeTask(todo)">
+             <span class="draw-check"><span class="v">&#x2713;</span></span>
+             <label :class="{ 'todo-completed': todo.completed, 'text-danger': isCritical }"
+              v-bind:for="'done-' + todo.title">
+              {{ todo.title }}
+             </label>
           </label>
-          <!--<label v-if="todo.completed" class="todo-completed" v-bind:for="'done-' + todo.title">
-            {{ todo.title }}
-          </label>
-          <label v-else v-bind:for="'done-' + todo.title">{{ todo.title }}</label>-->
         </div>
       </li>
     </ul>
@@ -43,6 +43,38 @@ export default {
 }
 </script>
 <style>
+  .toggle {
+   display: none;
+  }
+  .toggle:checked + .draw-check .v {
+   visibility: visible;
+  }
+  .v {
+   visibility: hidden;
+  }
+ .container-label{
+   display: flex;
+   flex-direction: row;
+   cursor: pointer;
+  }
+  .container-label > label {
+    margin-left: 10px;
+  }
+  .draw-check {
+   margin-right: 5px;
+   border: 1px solid rgba(0,0,0,0.2);
+   border-radius: 100%;
+   width: 22px;
+   height: 22px;
+   text-align: center;
+  
+  }
+  .draw-check .v {
+   color: rgb(110, 214, 124);
+   font-weight: bold;
+   
+  }
+
 .container {
   background-color: whitesmoke;
   width: 50%;
@@ -64,6 +96,7 @@ li {
   border-bottom-style: solid;
   border-bottom-width: 1px;
   margin: 18px auto;
+  padding-bottom: 8px;
 }
 .toggle {
   bottom: 0;
