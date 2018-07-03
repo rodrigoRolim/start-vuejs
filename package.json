@@ -9,7 +9,8 @@
     "start": "npm run dev",
     "lint": "eslint --ext .js,.vue src",
     "build": "node build/build.js",
-    "unit": "NODE_ENV=testing karma start test/unit/karma.conf.js --single-run"
+    "unit": "NODE_ENV=testing karma start test/unit/karma.conf.js",
+    "test": "NODE_ENV=testing npm run unit"
   },
   "dependencies": {
     "chai": "^4.1.2",
