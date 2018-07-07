@@ -25,7 +25,8 @@
     "karma-webpack": "^1.7.0",
     "sinon": "^1.17.3",
     "sinon-chai": "^2.8.0",
-    "vue": "^2.5.2"
+    "vue": "^2.5.2",
+    "vue-router": "^3.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
