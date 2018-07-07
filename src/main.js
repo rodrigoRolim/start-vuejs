@@ -5,14 +5,25 @@ import App from './App'
 import { Input } from 'element-ui'
 // import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
+import VueRouter from 'vue-router'
+import routes from './routes'
 
+Vue.use(VueRouter)
+const router = new VueRouter({
+  mode: 'history',
+  routes
+})
 Vue.config.productionTip = false
 //Vue.use(ElementUI)
 Vue.prototype.$ELEMENT = { size: 'small'}
 Vue.component(Input.name, Input)
 /* eslint-disable no-new */
 new Vue({
+  router,
   el: '#app',
   components: { App },
-  template: '<App/>'
+  template: `<div id="app>
+              <router-view class="view"></router-view>
+             </div>`,
+  components: {App}
 })
