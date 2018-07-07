@@ -1,19 +1,22 @@
 <template>
   <div class="container">
     <ul class="todo-list">
-      <li v-for="todo in sortedTasks" class="todo">
-        <div class="view">
-          <label class="container-label">
-            <input type="checkbox" class="toggle" v-bind:id="'done-' + todo.title"
-             @click="completeTask(todo)">
-             <span class="draw-check"><span class="v">&#x2713;</span></span>
-             <label :class="{ 'todo-completed': todo.completed, 'text-danger': isCritical }"
-              v-bind:for="'done-' + todo.title">
-              {{ todo.title }}
-             </label>
-          </label>
-        </div>
-      </li>
+      <transition-group name="fade">
+        <li v-for="(todo, index) in sortedTasks"
+         class="todo" :key="index">
+          <div class="view">
+            <label class="container-label">
+              <input type="checkbox" class="toggle" v-bind:id="'done-' + todo.title"
+              @click="completeTask(todo)">
+              <span class="draw-check"><span class="v">&#x2713;</span></span>
+              <label :class="{ 'todo-completed': todo.completed, 'text-danger': isCritical }"
+                v-bind:for="'done-' + todo.title">
+                {{ todo.title }}
+              </label>
+            </label>
+          </div>
+        </li>
+      </transition-group>
     </ul>
   </div>
 </template>
@@ -43,6 +46,13 @@ export default {
 }
 </script>
 <style>
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .5s;
+
+  }
+  .fade-enter, .fade-leave-to {
+    opacity: 0;
+  }
   .toggle {
    display: none;
   }
