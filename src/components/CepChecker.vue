@@ -2,7 +2,7 @@
  <section class="cepChecker">
   <div class="group-form">
    <label for="cep">Digite seu cep</label>
-   <input @blur="checkcep" type="text" name="cep" id="cep"/>
+   <input v-mask="'99999-999'" @blur="checkcep" type="text" name="cep" id="cep"/>
   </div>
   <router-link class="home" to="/">ver tarefas</router-link>
   <div v-show="hasAdress()" class="logradouro">
@@ -14,11 +14,15 @@
  </section>
 </template>
 <script>
+ import AwesomeMask from 'awesome-mask'
  export default {
   data(){
    return {
     address: {}
    }
+  },
+  directives: {
+   'mask': AwesomeMask
   },
   methods: {
    checkcep($event) {
