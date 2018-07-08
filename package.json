@@ -26,6 +26,7 @@
     "sinon": "^1.17.3",
     "sinon-chai": "^2.8.0",
     "vue": "^2.5.2",
+    "vue-resource": "^1.5.1",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {
