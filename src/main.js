@@ -7,12 +7,14 @@ import { Input } from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import VueRouter from 'vue-router'
 import routes from './routes'
+import VueResource from 'vue-resource'
 
 Vue.use(VueRouter)
 const router = new VueRouter({
   mode: 'history',
   routes
 })
+Vue.use(VueResource)
 Vue.config.productionTip = false
 //Vue.use(ElementUI)
 Vue.prototype.$ELEMENT = { size: 'small'}
