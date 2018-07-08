@@ -1,9 +1,11 @@
 <template>
-  <div class="container">
-    <input v-focus="true" type="text" class="new-todo"
-     @keyup.enter="addTask"
-     placeholder="o que precisa ser feito?">
-  </div>
+  <transition appear name="fade">
+    <div class="container">
+      <input v-focus="true" type="text" class="new-todo"
+      @keyup.enter="addTask"
+      placeholder="o que precisa ser feito?">
+    </div>
+  </transition>
 </template>
 
 <script>
