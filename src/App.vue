@@ -3,11 +3,9 @@
     <header class="header">
       <h1>Tarefas</h1>
     </header>
-   <input-task class="input" @newTask="addTask"></input-task>
+   <input-task class="input"></input-task>
    <task-list v-bind:todo-list="tasks"></task-list>
-    <div>
-    <todo-list></todo-list>
-  </div>
+   <router-link class="cep" to="/cep">Verificar Cep</router-link>
   </section>
 </template>
 
@@ -21,13 +19,18 @@ export default {
     InputTask,
     TaskList
   },
-  data () {
+  data() {
     return {
       tasks: []
     }
   },
+  mounted () {
+    console.log('viajem');
+    this.$events.on('newTask', eventData => this.addTask(eventData))
+  },
   methods: {
-    addTask (task) {
+    addTask(task) {
+      console.log(task);
       this.tasks.push(task)
     }
   }
@@ -41,9 +44,13 @@ export default {
   margin: 0;
   box-sizing: border-box;
 }
-.todoapp {
+#todoapp {
    display: flex;
-   flex-direction: row;
+   flex-direction: column;
+}
+.cep {
+  align-self: center;
+  text-decoration: none;
 }
 .header {
   background-color: rgb(95, 95, 235);

@@ -8,7 +8,9 @@ import 'element-ui/lib/theme-chalk/index.css'
 import VueRouter from 'vue-router'
 import routes from './routes'
 import VueResource from 'vue-resource'
+import VueEvents from './plugins/events'
 
+Vue.use(VueEvents)
 Vue.use(VueRouter)
 const router = new VueRouter({
   mode: 'history',
@@ -27,7 +29,7 @@ new Vue({
   template: `<div id="app">
               <transition name="fade" mode="out-in">
                 <router-view class="view"></router-view>
-              </trasition>
+              </transition>
              </div>`,
   components: {App}
 })
